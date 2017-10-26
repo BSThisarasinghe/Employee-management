@@ -34,7 +34,7 @@ class MainProject extends Component {
     }
 
     fetchData = async () => {
-        
+
         const response = await fetch('http://192.168.182.131/test/select.php');
         const json = await response.json();
         this.setState({ data: json.results });
@@ -97,9 +97,11 @@ class MainProject extends Component {
                     underlineColorAndroid='transparent'
                     style={styles.TextInputStyleClass}
                 />
-                <Button title="SUBMIT" onPress={this.InsertDataToServer} color="#2196F3" style={styles.ViewAll} />
-                <Button title="VIEW ALL" onPress={this.fetchData} color="green" style={styles.ViewAll} />
-                <View>
+                <View style={styles.ViewAll}>
+                    <Button title="SUBMIT" onPress={this.InsertDataToServer} color="#2196F3" />
+                    <Button title="VIEW ALL" onPress={this.fetchData} color="green" />
+                </View>
+                <View style={styles.State}>
                     <Text>STATE:</Text>
                     <Text>Name: {this.state.name}</Text>
                 </View>
@@ -110,7 +112,7 @@ class MainProject extends Component {
                         renderItem={({ item }) =>
                             <View style={styles.row}>
                                 <View>
-                                    <Text>
+                                    <Text style={styles.text}>
                                         {`${item.name}`}
                                     </Text>
                                 </View>
@@ -137,7 +139,7 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
         flex: 1,
         margin: 10,
-        backgroundColor: '#CBDDDF',
+        backgroundColor: 'white',
         borderColor: '#ACD3D6'
     },
 
@@ -156,10 +158,15 @@ const styles = StyleSheet.create({
         flex: 1,
         justifyContent: 'center',
         alignItems: 'center',
+        backgroundColor: '#B8F1F0'
     },
 
     ViewAll: {
-        marginTop: 50
+        marginTop: 20,
+        flex: 0,
+        flexDirection: 'row',
+        justifyContent: 'space-between',
+        width: 390
     },
 
     button: {
@@ -177,6 +184,16 @@ const styles = StyleSheet.create({
         justifyContent: 'space-between',
         height: 40,
         width: 200
+    },
+
+    text: {
+        fontSize: 15,
+        fontWeight: 'bold'
+    },
+
+    State: {
+        backgroundColor: '#B8F1F0',
+        borderColor: '#ACD3D6'
     }
 
 });
