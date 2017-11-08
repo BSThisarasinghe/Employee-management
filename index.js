@@ -35,14 +35,14 @@ class MainProject extends Component {
 
     fetchData = async () => {
 
-        const response = await fetch('http://192.168.182.131/test/select.php');
+        const response = await fetch('http://ip/test/select.php');
         const json = await response.json();
         this.setState({ data: json.results });
     }
 
     removeData = async (item) => {
         console.log(item);
-        return fetch('http://192.168.182.131/test/delete.php', {
+        return fetch('http://ip/test/delete.php', {
             method: 'POST',
             headers: {
                 'Accept': 'application/json',
@@ -67,7 +67,7 @@ class MainProject extends Component {
 
     InsertDataToServer = () => {
         const { name } = this.state;
-        fetch('http:/192.168.182.131/test/submit_user_info.php', {
+        fetch('http:/ip/test/submit_user_info.php', {
             method: 'POST',
             headers: {
                 'Accept': 'application/json',
